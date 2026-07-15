@@ -17,7 +17,6 @@ function AppRoutes() {
       {/* Pages sans MainLayout */}
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
-
       {/* Page 404 */}
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
