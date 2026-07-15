@@ -1,15 +1,14 @@
 import { Outlet } from "react-router-dom";
+import Navbar from "../components/layout/Navbar";
 
 function MainLayout() {
   return (
     <>
-      <h2>Navbar (à construire)</h2>
+      <Navbar />
 
-      <main>
+      <main className="container mx-auto p-6">
         <Outlet />
       </main>
-
-      <footer>Footer (à construire)</footer>
     </>
   );
 }
