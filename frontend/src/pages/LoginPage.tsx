@@ -1,25 +1,12 @@
-// Permet d'utiliser React Hook Form
+
 import { useForm } from "react-hook-form";
-
-// Permet de connecter Zod avec React Hook Form
 import { zodResolver } from "@hookform/resolvers/zod";
-
-// Sert à créer le schéma de validation
 import { z } from "zod";
-
-// Notre composant Input
 import Input from "../components/ui/Input";
-
-// Notre composant Button
 import Button from "../components/ui/Button";
 
-
-// -----------------------------
-// Schéma de validation Zod
-// -----------------------------
 const loginSchema = z.object({
 
-  // Email obligatoire + format email
   email: z
     .string()
     .email("Adresse email invalide"),
