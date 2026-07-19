@@ -5,6 +5,8 @@ import HomePage from "../pages/HomePage";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
 import NotFoundPage from "../pages/NotFoundPage";
+import DashboardPage from "../pages/DashboardPage";
+import ProtectedRoute from "./ProtectedRoute";
 
 function AppRoutes() {
   return (
@@ -13,6 +15,15 @@ function AppRoutes() {
       <Route path="/" element={<MainLayout />}>
         <Route index element={<HomePage />} />
       </Route>
+
+      <Route
+  path="/dashboard"
+  element={
+    <ProtectedRoute>
+      <DashboardPage />
+    </ProtectedRoute>
+  }
+/>
 
       {/* Pages sans MainLayout */}
       <Route path="/login" element={<LoginPage />} />
