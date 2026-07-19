@@ -10,17 +10,18 @@ import "./index.css";
 // Point d'entrée de l'application
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    {/* Active la navigation */}
+
+    {/* Active la navigation React */}
     <BrowserRouter>
 
-      {/* Rend les informations de connexion disponibles partout */}
+      {/* Rend l'authentification disponible partout */}
       <AuthProvider>
 
-        {/* Application principale */}
         <App />
 
       </AuthProvider>
 
     </BrowserRouter>
+
   </StrictMode>
 );
