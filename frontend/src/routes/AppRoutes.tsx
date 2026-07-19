@@ -17,8 +17,8 @@ function AppRoutes() {
       </Route>
 
       <Route
-  path="/dashboard"
-  element={
+        path="/dashboard"
+         element={
     <ProtectedRoute>
       <DashboardPage />
     </ProtectedRoute>
