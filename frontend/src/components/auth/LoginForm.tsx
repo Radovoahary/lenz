@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { Link } from "react-router-dom";
 
 import Button from "../ui/Button";
 import Input from "../ui/Input";
@@ -97,6 +98,19 @@ function LoginForm() {
                 Se connecter
 
             </Button>
+
+            <div className="text-center text-sm">
+
+  Pas encore de compte ?
+
+  <Link
+    to="/register"
+    className="ml-1 font-semibold text-blue-600 hover:underline"
+  >
+    S'inscrire
+  </Link>
+
+</div>
 
         </form>
 
