@@ -2,9 +2,13 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth";
+import * as authService from "../../services/auth.service";
 
 import Button from "../ui/Button";
 import Input from "../ui/Input";
+
 
 /*
     Règles de validation du formulaire.
@@ -44,15 +48,42 @@ function LoginForm() {
 
     });
 
+    // Permet de changer de page après la connexion
+const navigate = useNavigate();
+
+// Donne accès au AuthProvider
+const { login } = useAuth();
+
     /*
-        Cette fonction sera remplacée plus tard
-        par un appel au backend.
-    */
-    function onSubmit(data: LoginData) {
+|--------------------------------------------------------------------------
+| Connexion
+|--------------------------------------------------------------------------
+| Pour l'instant, si le backend n'existe pas encore,
+| cette fonction retournera une erreur.
+| C'est normal.
+|--------------------------------------------------------------------------
+*/
+async function onSubmit(data: LoginData) {
 
-        console.log(data);
+  try {
 
-    }
+    const response = await authService.login(data);
+
+    // Sauvegarde l'utilisateur dans le contexte
+    login(response.token, response.user);
+
+    // Redirection
+    navigate("/dashboard");
+
+  } catch (error) {
+
+    console.error(error);
+
+    alert("Impossible de se connecter.");
+
+  }
+
+}
 
     return (
 
@@ -101,14 +132,14 @@ function LoginForm() {
 
             <div className="text-center text-sm">
 
-  Pas encore de compte ?
+              Pas encore de compte ?
 
-  <Link
-    to="/register"
-    className="ml-1 font-semibold text-blue-600 hover:underline"
-  >
-    S'inscrire
-  </Link>
+                 <Link
+                    to="/register"
+                    className="ml-1 font-semibold text-blue-600 hover:underline"
+                >
+                    S'inscrire
+                </Link>
 
 </div>
 
